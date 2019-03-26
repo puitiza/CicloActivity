@@ -1,29 +1,39 @@
 package com.puitiza.cicloactivity;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final String LOG_TAG = "log_fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new BlankFragment())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
+
         Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show();
-    }
+        Log.v(LOG_TAG, "onStart");
+    }*/
 
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
-    }
+        Log.v(LOG_TAG, "onResume");
+        //Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+    }*/
 
     @Override
     protected void onPause() {
